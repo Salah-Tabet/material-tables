@@ -10,7 +10,7 @@ import { ServiceResource } from '../types';
   
 const theme = createTheme();
 
-const Serviceselector: React.FC = () => {
+const Serviceselector: React.FC<any> = ({ maxSelection = 5, buttonText = "Next" }) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
   
@@ -32,11 +32,11 @@ const Serviceselector: React.FC = () => {
     // }
   
     const handleSelectedServiceChange = (event: any, value: ServiceResource[]) => {
-     if(value.length <= 5) {
+     if(value.length <= maxSelection) {
         dispatch(setServiceSelected(value));
         setLimitReachedText(false);
      }
-      if (value.length >= 5) {
+      if (value.length >= maxSelection) {
         setLimitReachedText(true);
       }
     };
@@ -78,15 +78,15 @@ const Serviceselector: React.FC = () => {
                 //disableCloseOnSelect
                 forcePopupIcon={false}
                 id="services"
-                open={listServicesSelected?.length < 5 && inputClicked}
+                open={listServicesSelected?.length < maxSelection && inputClicked}
                 //size="small"
                 options={listServices}
                 getOptionLabel={getOptionLabel}
                 isOptionEqualToValue={(option:any, value:any) => option.name === value.name}
                 //value={selectedServices}
                 onChange={handleSelectedServiceChange}
-                getOptionDisabled={(options) => (listServicesSelected?.length === 5 ? true : false)}
-                limitTags={5}
+                getOptionDisabled={(options) => (listServicesSelected?.length === maxSelection ? true : false)}
+                limitTags={maxSelection}
                 getLimitTagsText={() => `You have reached the limit of 5 services`}
                 renderOption={renderOption}
                 defaultValue={[]}
@@ -96,7 +96,7 @@ const Serviceselector: React.FC = () => {
                     {...params}
                     variant="outlined"
                     label="Select Services"
-                    placeholder={listServicesSelected?.length < 5 ? 'Select up to 5 Services' : ''}
+                    placeholder={listServicesSelected?.length < maxSelection ? 'Select up to 5 Services' : ''}
                     onClick={() => setInputClicked(true)}
                     data-testid={params.id.toString()}
                     
@@ -108,7 +108,7 @@ const Serviceselector: React.FC = () => {
               />
               </ThemeProvider>
               <Button disabled={listServicesSelected?.length < 1} type="submit" variant="contained" color="primary" data-testid="buttonNext">
-                NEXT
+               {buttonText}
               </Button>
             </Stack>
             {limitReachedText && <p data-testid="limitText">You have reached the limit of 5 services</p>}
