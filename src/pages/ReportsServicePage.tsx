@@ -4,7 +4,9 @@ import { Card, CardContent, Grid, Typography, Box, TableHead, TableCell, TableCo
 import { amber, blue, brown, green, grey, orange, teal, yellow } from '@mui/material/colors';
 import ServiceSelector from '../components/ServiceSelector';
 
-
+const customServiceSelectorStyle = {
+    minHeight: 'auto', 
+  };
 
 const ReportsServicePage = () => {
   return (
@@ -15,8 +17,8 @@ const ReportsServicePage = () => {
           Service Access Reports
         </Typography>
       </Grid>
-      <Grid item xs={12} sx={{ justifyContent: 'center' }}>
-        <ServiceSelector maxSelection={1000} buttonText="Generate" sx={{ width: '60%'}} />
+      <Grid item xs={12} sx={{ justifyContent: 'center', width: '60%' }}>
+        <ServiceSelector maxSelection={1000} buttonText="Generate" sx={{ width: '60%', ...customServiceSelectorStyle }} />
       </Grid>
       <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'left', marginLeft: '16px', marginTop: '16px' }}>
         <Button variant="contained" color="primary">
@@ -44,7 +46,6 @@ const ReportsServicePage = () => {
                 <TableCell>Row 2, Cell 2</TableCell>
                 <TableCell>Row 2, Cell 3</TableCell>
               </TableRow>
-              {/* Add more rows as needed */}
             </TableBody>
           </Table>
         </TableContainer>

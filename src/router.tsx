@@ -25,7 +25,7 @@ const RouterBuild = () => {
   const generalRoutes: RouteObject[] = [
     // { path: "/", element: <ServiceSelectorPageDummy />,  },
     { path: "/", element: <HomePage />,  },
-    { path: "/pcr-editor/create", element: <ServiceSelector />,  },
+    { path: "/pcr-editor/create", element: <ServiceSelectorPageDummy />,  },
     { path: "/reports", element: <ReportsPage />,  },
     { path: "/reports/service-access-report", element: <ReportsServicePage />,  },
   ];

@@ -69,8 +69,8 @@ const Serviceselector: React.FC<any> = ({ maxSelection = 5, buttonText = "Next" 
   
     return (
       <>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-          <form onSubmit={handleNext} style={{ width: '50%' }}>
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="auto">
+          <form onSubmit={handleNext} style={{ width: '65%' }}>
             <Stack direction="row" spacing={2}>
               <ThemeProvider theme={theme}>
               <Autocomplete
@@ -96,7 +96,7 @@ const Serviceselector: React.FC<any> = ({ maxSelection = 5, buttonText = "Next" 
                     {...params}
                     variant="outlined"
                     label="Select Services"
-                    placeholder={listServicesSelected?.length < maxSelection ? 'Select up to 5 Services' : ''}
+                    placeholder={listServicesSelected?.length < maxSelection && buttonText=='Next' ? 'Select up to 5 Services' : ''}
                     onClick={() => setInputClicked(true)}
                     data-testid={params.id.toString()}
                     
