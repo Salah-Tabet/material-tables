@@ -8,9 +8,9 @@ const ServiceSelectorPageDummy: React.FC = () => {
         <>
         <Grid
       container
-      justifyContent="center" // Horizontally centering the content
-      alignItems="center"     // Vertically centering the content
-      style={{ minHeight: '100vh' }} // Ensure the component takes up the full height of the viewport
+      justifyContent="center" 
+      alignItems="center"     
+      style={{ minHeight: '100vh' }} 
     >
       <Grid item xs={8} style={{ textAlign: "center", width: '65%' }}>
          <ServiceSelector /> 

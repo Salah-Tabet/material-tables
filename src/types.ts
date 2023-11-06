@@ -8,3 +8,14 @@ export interface ServiceResource {
 export interface ServiceStatus {
     value:string;
 }
+
+export interface RoleResource{
+    id:number;
+    name:string;
+    sdlc:string;
+    description:string;
+}
+export interface Role {
+    role: RoleResource;
+    isChecked:boolean;
+}
