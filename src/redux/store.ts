@@ -1,5 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { creamSlice } from './features/api/creamSlice';
+import listRolesSlice from './features/listRolesSlice';
 import listServicesSlice from './features/listServiceSlice';
 //import listRolesSlice from './features/listRolesSlice';
 //import listActionSlice from './features/listActionSlice';
@@ -10,7 +11,7 @@ export type AppDispatch = typeof store.dispatch;
 
 const reducer = combineReducers({
   listServicesSlice,
- // listRoles: listRolesSlice,
+  listRoles: listRolesSlice,
   //listActions: listActionSlice,
   [creamSlice.reducerPath]: creamSlice.reducer,
 });

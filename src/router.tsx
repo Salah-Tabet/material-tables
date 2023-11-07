@@ -13,6 +13,7 @@ import ReportsServicePage from "./pages/ReportsServicePage";
 import ReportsPage from "./pages/ReportsPage";
 //import PCRPageDummy from "./pages/PCRPageDummy";
 import ServiceSelectorPageDummy from "./pages/ServiceSelectorPageDummy";
+import ReportsRolePage from "./pages/ReportsRolePage";
 
 const AppLayout = () => (
   <>
@@ -27,6 +28,7 @@ const RouterBuild = () => {
     { path: "/", element: <HomePage />,  },
     { path: "/pcr-editor/create", element: <ServiceSelectorPageDummy />,  },
     { path: "/reports", element: <ReportsPage />,  },
+    { path: "/reports/role-access-reports", element: <ReportsRolePage />,  },
     { path: "/reports/service-access-report", element: <ReportsServicePage />,  },
   ];
 

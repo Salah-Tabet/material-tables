@@ -2,42 +2,45 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RoleResource, Role } from '../../types';
 
 interface State {
-    roles: Role[l;
+    roles: Role[];
     checkedAll: boolean;
+    rolesSelected: RoleResource[];
 }
 
 const emptyState: State = {
-checkedAll: false,
-roles: []
+    checkedAll: false,
+    roles: [],
+    rolesSelected: []
 }
 
 const state: State = {
-checkedAll: false,
-roles: [
-    {
-    role:{
-        id: 0,
-        name: 'priv_fagsi_dev_d',
-        sdlc: "DEV",
-        description: '',
-        },
-       isChecked: false
-    },
-    {
-    role: {
-        id: 1,
-        name: "priv_fags)_dev_q",
-        sdlc: 'QA',
-        description: "",
-        },
+    checkedAll: false,
+    roles: [
+        {
+        role:{
+            id: 0,
+            name: 'priv_fagsi_dev_d',
+            sdlc: "DEV",
+            description: '',
+            },
         isChecked: false
-    }
-]
+        },
+        {
+        role: {
+            id: 1,
+            name: "priv_fags)_dev_q",
+            sdlc: 'QA',
+            description: "",
+            },
+            isChecked: false
+        }
+        ],
+    rolesSelected: [],
 }
 
-const listRolesslice = createslice({
+const listRolesslice = createSlice({
     name: 'listRoles',
-    initialState: emptyState,
+    initialState: state,
     reducers: {
     
         checkRole: (state: State, action: PayloadAction<number>) =>{
@@ -56,15 +59,18 @@ const listRolesslice = createslice({
             });
         },
         setRoles: (state: State, action: PayloadAction<RoleResource[]>) =>{
-            state.roles = action.payload.map((role: any) =>{
-            return { roles: role, sChecked: false}
+            state.roles = action.payload.map((role) =>{
+            return { role: role, isChecked: false}
             });
             state.checkedAll = false;
         },
+        setRolesSelected: (state: State, action: PayloadAction<any>) => {
+            state.rolesSelected = action.payload;
+          },
     },
 });
             // Actions
     
     
-export const { checkRole, checkAllRoles, setRoles } = listRolesslice.actions;
+export const { checkRole, checkAllRoles, setRoles, setRolesSelected } = listRolesslice.actions;
 export default listRolesslice.reducer;
