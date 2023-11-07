@@ -32,24 +32,26 @@ const RolesSelector: React.FC<any> = ({maxSelection=100}) => {
     //   console.log('Error loading services -', JSON.stringify(servicesError));
     // }
   
-    const handleSelectedServiceChange = (event: any) => {
-    //   if (value.length > 0) {
-    //     dispatch(setRolesSelected(value));
-    //   }
+    const handleSelectedServiceChange = (event: any, value: any) => {
+      if (value.length > 0) {
+        dispatch(setRolesSelected(value));
+      }else{
+        dispatch(setRolesSelected([]))
+      }
     
-    console.log("===== event :: ", event)
     };
   
     const handleNext = (event: any) => {
       event.preventDefault();
-      console.log('==>>>>', event);
+      console.log('==role selected in generate action :>>>>', listRolesSelected);
   
       const selectedIds = listRolesSelected.map((role: any) => role.id);
   
       const params = new URLSearchParams();
       params.set('role-ids', selectedIds.join(','));
+      console.log("======params >>>> ", params.toString());
   
-      //navigate(`/pcr-editor/create?${params.toString().replace(/%2C/g, ',')}`);
+      navigate(`/reports/role-access-reports?${params.toString().replace(/%2C/g, ',')}`);
     };
   
     const getOptionLabel = (option:any) => `${option.role.name}`;

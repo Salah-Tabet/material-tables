@@ -49,7 +49,7 @@ const Serviceselector: React.FC<any> = ({ maxSelection = 5, buttonText = "Next" 
   
       const params = new URLSearchParams();
       params.set('service-ids', selectedIds.join(','));
-  
+      console.log("sevice params ===> ", params.toString());
       navigate(`/pcr-editor/create?${params.toString().replace(/%2C/g, ',')}`);
     };
   

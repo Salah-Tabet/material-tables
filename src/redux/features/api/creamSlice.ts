@@ -29,6 +29,12 @@ export const creamSlice = createApi({
     getActions: builder.query<any[], number>({
       query: (serviceId: number) => `actions/search/find-by-service-ids?serviceId=${serviceId}`,
     }),
+    roleReportPermissions: builder.query<any[], number>({
+      query : (roleId: number) => `reports/role-access-reports?role-ids?roleId=${roleId},`
+    }),
+    serviceReportPermissions: builder.query<any[], number>({
+      query : (roleId: number) => `reports/role-access-reports?role-ids?roleId=${roleId},`
+    }),
   }),
 });
 
